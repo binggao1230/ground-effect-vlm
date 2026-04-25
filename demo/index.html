@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#08111f">
+  <title>Ground Effect VLM Explorer</title>
+  <link rel="stylesheet" href="./style.css?v=1">
+</head>
+<body>
+  <main>
+    <header>
+      <div><span class="eyebrow">GROUND EFFECT / LOW-ORDER STUDY</span><h1>Image-vortex ride-height explorer</h1></div>
+      <span class="status">VERIFIED LINEAR MODEL</span>
+    </header>
+
+    <section class="controls" aria-label="Model controls">
+      <label>Quarter-chord height <strong id="height-label">h/c 1.00</strong><input id="height" type="range" min="0" max="13" step="1" value="6"></label>
+      <label>Incidence <strong id="alpha-label">α +4.0°</strong><input id="alpha" type="range" min="-4" max="8" step="0.5" value="4"></label>
+      <button id="reset" type="button">Reset</button>
+    </section>
+
+    <section class="metrics" aria-live="polite">
+      <article><span>Lift coefficient</span><strong id="cl">0.000</strong><small id="cl-delta">— vs free air</small></article>
+      <article><span>Induced drag</span><strong id="cdi">0.0000</strong><small>Trefftz-plane estimate</small></article>
+      <article><span>Lift amplification</span><strong id="amp">1.00×</strong><small>At fixed incidence</small></article>
+      <article><span>Span efficiency</span><strong id="efficiency">1.00</strong><small>Free-air reference form</small></article>
+    </section>
+
+    <section class="workspace">
+      <article class="panel scene-panel">
+        <div class="panel-heading"><div><span class="eyebrow">BOUNDARY CONSTRUCTION</span><h2>Real wing + reversed image</h2></div><span class="legend"><i></i> Ground plane</span></div>
+        <canvas id="scene" aria-label="Wing and mirrored image-vortex diagram"></canvas>
+        <p>The image system cancels normal velocity at the moving ground plane. It does not model a road boundary layer.</p>
+      </article>
+      <article class="panel chart-panel">
+        <div class="panel-heading"><div><span class="eyebrow">SPAN LOAD</span><h2>Normalised circulation</h2></div><span id="case-label">h/c 1.00</span></div>
+        <canvas id="chart" aria-label="Normalised spanwise circulation chart"></canvas>
+        <p>One chordwise row · 64 uniform span panels · 80-chord finite wake</p>
+      </article>
+    </section>
+
+    <footer><span>Use this to inspect mechanism and trend—not race-car performance.</span><span>All states regenerated from the Python solver.</span></footer>
+  </main>
+  <script type="module" src="./app.js?v=1"></script>
+</body>
+</html>

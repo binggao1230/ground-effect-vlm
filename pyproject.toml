@@ -1,0 +1,6 @@
+[project]
+name = "ground-effect-vlm"
+version = "0.1.0"
+description = "Ground-effect vortex-lattice study for a finite rectangular wing"
+requires-python = ">=3.11"
+dependencies = ["numpy>=2.0", "matplotlib>=3.9"]

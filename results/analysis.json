@@ -1,0 +1,173 @@
+{
+  "project": "Ground Effect VLM",
+  "generatedAt": "2026-08-23T16:31:53Z",
+  "configuration": {
+    "planform": "rectangular finite wing",
+    "aspectRatio": 4.0,
+    "alphaDegrees": 4.0,
+    "spanPanels": 64,
+    "wakeLengthsInChords": 80,
+    "heightDefinition": "quarter-chord height / chord",
+    "heightSweep": [
+      0.25,
+      0.3,
+      0.4,
+      0.5,
+      0.65,
+      0.8,
+      1.0,
+      1.25,
+      1.5,
+      2.0,
+      3.0,
+      5.0,
+      10.0,
+      50.0
+    ]
+  },
+  "verification": {
+    "prandtlLiftSlopePerRadian": 4.1887902047863905,
+    "vlmFreeAirLiftSlopePerRadian": 3.7276369281994692,
+    "liftSlopeRelativeError": 0.1100922352377488,
+    "farGroundToFreeAirLiftRelativeDifference": 3.3467430715807655e-05,
+    "maximumGroundNormalVelocityResidual": 0.0,
+    "refinementPanels": [
+      16,
+      24,
+      32,
+      48,
+      64,
+      96
+    ],
+    "refinementLiftCoefficients": [
+      0.29091365993530427,
+      0.28866598172793745,
+      0.2882598702854893,
+      0.2887429794297503,
+      0.2893640699742558,
+      0.2901123905029189
+    ],
+    "refinementRelativeChange64To96": 0.0025794159545061163,
+    "spanwiseSymmetryMaxDifference": 1.942890293094024e-16
+  },
+  "results": {
+    "freeAir": {
+      "liftCoefficient": 0.26146035037169624,
+      "inducedDragCoefficient": 0.005492239056782741,
+      "spanEfficiency": 0.9904952140473297
+    },
+    "groundSweep": [
+      {
+        "heightOverChord": 0.25,
+        "liftCoefficient": 0.5418925420662919,
+        "inducedDragCoefficient": 0.00901145465720617,
+        "spanEfficiency": 2.5931138340020694,
+        "liftAmplification": 2.07256106440586
+      },
+      {
+        "heightOverChord": 0.3,
+        "liftCoefficient": 0.46403779477360907,
+        "inducedDragCoefficient": 0.007472484591816774,
+        "spanEfficiency": 2.2931465808325164,
+        "liftAmplification": 1.7747922165403873
+      },
+      {
+        "heightOverChord": 0.4,
+        "liftCoefficient": 0.3844297537624547,
+        "inducedDragCoefficient": 0.006112587047765924,
+        "spanEfficiency": 1.9239734116961658,
+        "liftAmplification": 1.4703175958264538
+      },
+      {
+        "heightOverChord": 0.5,
+        "liftCoefficient": 0.34610395105742797,
+        "inducedDragCoefficient": 0.00558705163170143,
+        "spanEfficiency": 1.7061631801876707,
+        "liftAmplification": 1.3237339832422048
+      },
+      {
+        "heightOverChord": 0.65,
+        "liftCoefficient": 0.31678111023502953,
+        "inducedDragCoefficient": 0.005295865113532392,
+        "spanEfficiency": 1.507897336456976,
+        "liftAmplification": 1.21158374409232
+      },
+      {
+        "heightOverChord": 0.8,
+        "liftCoefficient": 0.3012291852786362,
+        "inducedDragCoefficient": 0.005210534596895031,
+        "spanEfficiency": 1.3858044337098514,
+        "liftAmplification": 1.1521027369939798
+      },
+      {
+        "heightOverChord": 1.0,
+        "liftCoefficient": 0.2893640699742558,
+        "inducedDragCoefficient": 0.005197490950788759,
+        "spanEfficiency": 1.2819928488076766,
+        "liftAmplification": 1.1067225663963625
+      },
+      {
+        "heightOverChord": 1.25,
+        "liftCoefficient": 0.280919377475773,
+        "inducedDragCoefficient": 0.005226749190488433,
+        "spanEfficiency": 1.2014947293502856,
+        "liftAmplification": 1.0744243900706685
+      },
+      {
+        "heightOverChord": 1.5,
+        "liftCoefficient": 0.27583048367769236,
+        "inducedDragCoefficient": 0.00526420997850836,
+        "spanEfficiency": 1.150115493186839,
+        "liftAmplification": 1.0549610420301485
+      },
+      {
+        "heightOverChord": 2.0,
+        "liftCoefficient": 0.27018088748518665,
+        "inducedDragCoefficient": 0.005327249448476866,
+        "spanEfficiency": 1.0904263828416618,
+        "liftAmplification": 1.0333531914154217
+      },
+      {
+        "heightOverChord": 3.0,
+        "liftCoefficient": 0.2655793291556314,
+        "inducedDragCoefficient": 0.005399640682262273,
+        "spanEfficiency": 1.039474438901965,
+        "liftAmplification": 1.0157537415446725
+      },
+      {
+        "heightOverChord": 5.0,
+        "liftCoefficient": 0.26296997277777157,
+        "inducedDragCoefficient": 0.005452989156167959,
+        "spanEfficiency": 1.0091781170928273,
+        "liftAmplification": 1.0057738100783895
+      },
+      {
+        "heightOverChord": 10.0,
+        "liftCoefficient": 0.26182529923926917,
+        "inducedDragCoefficient": 0.005481539037705563,
+        "spanEfficiency": 0.995201087089687,
+        "liftAmplification": 1.0013958096019304
+      },
+      {
+        "heightOverChord": 50.0,
+        "liftCoefficient": 0.26146910077785723,
+        "inducedDragCoefficient": 0.0054919275249339355,
+        "spanEfficiency": 0.9906177038261456,
+        "liftAmplification": 1.0000334674307159
+      }
+    ],
+    "halfChordHeightLiftAmplification": 1.3237339832422048,
+    "oneChordHeightLiftAmplification": 1.1067225663963625,
+    "halfChordHeightInducedDragPerLiftSquaredReduction": 0.4194604446109431
+  },
+  "performance": {
+    "analysisSeconds": 13.754360124934465
+  },
+  "acceptance": {
+    "groundBoundaryResidualBelowOneTrillionth": true,
+    "farGroundMatchesFreeAirWithinPointOnePercent": true,
+    "freeAirLiftSlopeWithinTwelvePercentOfPrandtl": true,
+    "spanRefinementChangeBelowOnePercent": true,
+    "liftAmplificationMonotonicOverDeclaredSweep": true
+  }
+}

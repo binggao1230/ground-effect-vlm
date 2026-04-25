@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "slug": "ground-effect-vlm",
+  "title": "Ground-effect image-vortex validation",
+  "summary": "A from-primitives horseshoe-vortex solver isolates finite-wing ground effect and checks boundary enforcement, asymptotic recovery, analytical scale, and panel refinement.",
+  "methods": [
+    "Finite Biot-Savart segments assembled into one-row horseshoe-vortex lattices.",
+    "Reversed image vortices enforce a moving ground plane without a viscous road boundary layer.",
+    "Ride-height sweep, Trefftz-plane induced drag, analytical scale check, and span refinement."
+  ],
+  "limitations": [
+    "The model is linear, inviscid, steady, incompressible, and zero-thickness.",
+    "There are no tyres, body, diffuser, leakage, separation, or moving-road boundary layer.",
+    "The published sweep stops at quarter-chord height h/c=0.25 and is not a race-car performance prediction."
+  ],
+  "reproducibility": {
+    "commands": [
+      "cd projects/ground-effect-vlm && python3 -m unittest discover -s tests -v",
+      "cd projects/ground-effect-vlm && python3 scripts/analyse.py",
+      "cd projects/ground-effect-vlm && python3 scripts/build_demo.py"
+    ]
+  },
+  "sources": [
+    {
+      "id": "nasa-vlm",
+      "title": "NASA SP-405, Vortex-Lattice Utilization",
+      "url": "https://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/19760021075.pdf",
+      "role": "method reference"
+    },
+    {
+      "id": "nasa-mvl",
+      "title": "NASA/TM-2015-218804, Description, Usage, and Validation of MVL-15",
+      "url": "https://ntrs.nasa.gov/citations/20160000765",
+      "role": "linear-method scope reference"
+    },
+    {
+      "id": "solver",
+      "title": "Ground-effect VLM solver",
+      "artifact": "src/ground_effect_vlm.py",
+      "role": "numerical implementation"
+    },
+    {
+      "id": "analysis",
+      "title": "Ground-effect verification runner",
+      "artifact": "scripts/analyse.py",
+      "role": "acceptance evaluation"
+    }
+  ],
+  "claims": [
+    {
+      "id": "ground-boundary",
+      "statement": "The reversed image system leaves less than 1e-12 normal velocity on the ground plane.",
+      "metric": {"path": "results/analysis.json", "pointer": "/verification/maximumGroundNormalVelocityResidual", "display": ".2e"},
+      "expectation": {"operator": "<=", "value": 1e-12},
+      "artifacts": ["results/analysis.json", "results/ground-sweep.svg"],
+      "sourceIds": ["solver", "analysis"]
+    },
+    {
+      "id": "far-ground-recovery",
+      "statement": "The h/c=50 image solution recovers free-air lift within 0.1%.",
+      "metric": {"path": "results/analysis.json", "pointer": "/verification/farGroundToFreeAirLiftRelativeDifference", "display": ".4%"},
+      "expectation": {"operator": "<=", "value": 0.001},
+      "artifacts": ["results/analysis.json", "results/verification.svg"],
+      "sourceIds": ["solver", "analysis"]
+    },
+    {
+      "id": "lift-slope-scale",
+      "statement": "The free-air lift slope is within 12% of the Prandtl finite-wing estimate.",
+      "metric": {"path": "results/analysis.json", "pointer": "/verification/liftSlopeRelativeError", "display": ".2%"},
+      "expectation": {"operator": "<=", "value": 0.12},
+      "artifacts": ["results/analysis.json", "results/verification.svg"],
+      "sourceIds": ["nasa-vlm", "solver", "analysis"]
+    },
+    {
+      "id": "span-refinement",
+      "statement": "Lift changes less than 1% from 64 to 96 span panels at h/c=1.",
+      "metric": {"path": "results/analysis.json", "pointer": "/verification/refinementRelativeChange64To96", "display": ".3%"},
+      "expectation": {"operator": "<=", "value": 0.01},
+      "artifacts": ["results/analysis.json", "results/verification.svg"],
+      "sourceIds": ["solver", "analysis"]
+    },
+    {
+      "id": "half-chord-lift-amplification",
+      "statement": "The ideal image model produces at least 30% fixed-incidence lift amplification at h/c=0.5.",
+      "metric": {"path": "results/analysis.json", "pointer": "/results/halfChordHeightLiftAmplification", "display": ".3f"},
+      "expectation": {"operator": ">=", "value": 1.3},
+      "artifacts": ["results/analysis.json", "results/ground-sweep.svg", "results/span-loading.svg"],
+      "sourceIds": ["nasa-mvl", "solver", "analysis"]
+    }
+  ]
+}
