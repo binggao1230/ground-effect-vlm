@@ -22,3 +22,9 @@ python3 scripts/publish_site.py
 - A moving ground plane: no boundary layer, road roughness, tyre interaction, diffuser, or body blockage.
 
 This is a method and mechanism study, not a performance prediction for a race-car floor. The low-height amplification should not be extrapolated below the declared sweep or interpreted as viscous downforce.
+
+---
+
+## Portfolio case study
+
+Read the [full engineering case study and interactive demo](https://binggao.dev/projects/ground-effect-vlm/).
